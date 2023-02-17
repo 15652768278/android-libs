@@ -1,0 +1,62 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+android {
+    namespace 'com.jiangdg.natives'
+
+    compileSdkVersion libs.versions.compileSdkVersion.get().toInteger()
+    buildToolsVersion libs.versions.buildToolsVersion.get()
+
+    defaultConfig {
+        minSdkVersion libs.versions.minSdkVersion.get().toInteger()
+        targetSdkVersion libs.versions.targetSdkVersion.get().toInteger()
+
+        ndk{
+            abiFilters 'arm64-v8a'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "${project.projectDir}/src/main/cpp/CMakeLists.txt"
+            version libs.versions.cmakeVersion.get()
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility libs.versions.sourceCompatibility.get()
+        targetCompatibility libs.versions.targetCompatibility.get()
+    }
+
+    ndkVersion libs.versions.ndkVersion.get()
+}
+
+dependencies {
+    // core
+    implementation libs.corektx
+    implementation libs.appcompat
+    implementation libs.material
+}
+
+task makeJar(type: Copy) {
+    //删除存在的（注意mylibrary是自己命名的，名字随便改）
+    delete 'build/libs/libnative.jar'
+    //设置拷贝的文件，需要根据AS的版本找到响应的文件夹
+    from('build/intermediates/compile_library_classes_jar/release')
+    //jar包最后的文件目录
+    into('build/libs/')
+    //include ,exclude参数来设置过滤（我们只关心classes.jar这个文件）
+    include('classes.jar')
+    //重命名（注意mylibrary是自己命名的，名字随便改）
+    rename('classes.jar', 'libnative.jar')
+}
+makeJar.dependsOn(build)

@@ -1,0 +1,64 @@
+[versions]
+# compile
+compileSdkVersion = "33"
+buildToolsVersion = "33.0.0"
+minSdkVersion = "19"
+targetSdkVersion = "28"
+versionName = "local"
+versionCode = "1"
+sourceCompatibility = "1.10"
+targetCompatibility = "1.10"
+cmakeVersion = "3.22.1"
+ndkVersion = "25.1.8937393"
+# library
+navigation = "2.5.3"
+lifecycle = "2.6.0-alpha05"
+retrofit = "2.9.0"
+glide = "4.14.2"
+room = "2.5.0"
+
+[libraries]
+junit = "junit:junit:4.13.2"
+kotlinxcoroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+androidjunit = "androidx.test.ext:junit:1.1.5"
+espresso = "androidx.test.espresso:espresso-core:3.5.1"
+glance = "com.guolindev.glance:glance:1.1.0"
+# core
+annotation = "androidx.annotation:annotation:1.5.0"
+corektx = "androidx.core:core-ktx:1.9.0"
+appcompat = "androidx.appcompat:appcompat:1.6.0"
+material = "com.google.android.material:material:1.8.0"
+constraintlayout = "androidx.constraintlayout:constraintlayout:2.1.4"
+# common
+fragment = "androidx.fragment:fragment-ktx:1.5.5"
+gson = "com.google.code.gson:gson:2.10.1"
+recyclerview = "androidx.recyclerview:recyclerview:1.2.1"
+wheelview = "com.github.javakam:widget.wheelview:1.3.0@aar"
+pickerview = "com.github.javakam:widget.pickerview:1.3.0@aar"
+# bundle
+roomcore = { module = "androidx.room:room-runtime", version.ref = "room" }
+roomktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+roomcompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+glidecore = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+glidecompiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation" }
+navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigation" }
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+retrofit-logging-interceptor = "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10"
+agora-rtc-full = "io.agora.rtc:full-sdk:4.1.0-1"
+agora-rtm = "io.agora.rtm:rtm-sdk:1.5.3"
+mqtt-client = "org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5"
+mqtt-server = "org.eclipse.paho:org.eclipse.paho.android.service:1.1.1"
+
+[bundles]
+navigation = ["navigation-fragment-ktx", "navigation-ui-ktx", "navigation-dynamic-features-fragment"]
+lifecycle = ["lifecycle-viewmodel", "lifecycle-livedata"]
+retrofit = ["retrofit-core", "retrofit-converter-gson", "retrofit-logging-interceptor"]
+agora = ["agora-rtc-full", "agora-rtm"]
+mqtt = ["mqtt-client", "mqtt-server"]
+
+[plugins]
